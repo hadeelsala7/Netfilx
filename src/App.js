@@ -1,9 +1,21 @@
 import React from 'react';
-import Jumbotrom from './components/jumbotron/index'
+import jumboData from './fixtures/jumbo.json'
+import Jumbotron from './components/jumbotron/index'
 
-export default function app() {
+export default function App() {
   return (
-    <Jumbotrom />
+    <Jumbotron.Container>
+      {jumboData.map((item) => (
+        <Jumbotron key={item.id} direction={item.direction}>
+          <Jumbotron.Pane>
+            <Jumbotron.Title>{item.title}</Jumbotron.Title>
+            <Jumbotron.SubTitle>{item.subTitle}</Jumbotron.SubTitle>
+          </Jumbotron.Pane>
+          <Jumbotron.Pane>
+            <Jumbotron.Image src={item.image} alt={item.alt} />
+          </Jumbotron.Pane>
+        </Jumbotron>
+      ))}
+    </Jumbotron.Container>
   );
 }
-
